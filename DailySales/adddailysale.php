@@ -18,7 +18,7 @@ $db = $database->getConnection();
 $dailysale = new Dailysale($db);
  
 // set customer property values
- $q=isset($_POST["query"]);
+ $q=$_POST["query"];
 
 
 // create the customer

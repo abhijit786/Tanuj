@@ -17,6 +17,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
 <a href="addcustomers.php"> Add Customers</a>
 <a href="adddailysale.php"> Add Daily Sales</a>
 <a href="viewcustomersales.php"> View Customer Sales</a>
+<a href="#"> View Customer Bill</a>
 <a href="logoff.php"> logoff</a>
 <?php } else if( $_SESSION["role"]=="admin") {?>
 <span>Hello !!! <?php echo $_SESSION["username"]; ?></span>
