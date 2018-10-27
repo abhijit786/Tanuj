@@ -30,6 +30,7 @@ class Dailysale{
         $query = "select * from ".$this->table_name." where customer_created_by='".$_SESSION["username"]."' and ( customer_fn like '".$q."%' or customer_mn like '".$q."%' or customer_ln like '".$q."%')"; 
         
 
+
       
         $sth = $this->conn->query($query);
 
@@ -86,14 +87,14 @@ class Dailysale{
     }
 
 
-   function update_customer_daily_details($customer_id_daily,$taken_can_daily,$return_can_daily,$taken_jar_daily,$return_jar_daily,$paid_amount_daily,$discount_daily)
+   function update_customer_daily_details($customer_id_daily,$taken_can_daily,$return_can_daily,$taken_jar_daily,$return_jar_daily,$paid_amount_daily,$discount_daily,$date_daily)
 
     {
-
         
 
-           $query1 = "UPDATE daily_entry set taken_can=taken_can +".$taken_can_daily.",return_can=return_can+".$return_can_daily.",taken_jar=taken_jar+".$taken_jar_daily.",return_jar=return_jar+".$return_jar_daily.",paid_amount=paid_amount+".$paid_amount_daily.",discount=discount+".$discount_daily.",taken_date=now() where customer_id=".$customer_id_daily;
+           $query1 = "UPDATE daily_entry set taken_can=taken_can +".$taken_can_daily.",return_can=return_can+".$return_can_daily.",taken_jar=taken_jar+".$taken_jar_daily.",return_jar=return_jar+".$return_jar_daily.",paid_amount=paid_amount+".$paid_amount_daily.",discount=discount+".$discount_daily.",taken_date='".$date_daily."' where customer_id=".$customer_id_daily;
         // prepare query
+           
          
         
         $stmt1 = $this->conn->prepare($query1);
@@ -101,10 +102,11 @@ class Dailysale{
 
 
 
-        $query2 = "INSERT INTO  daily_entry_history(customer_id,taken_can,return_can,taken_jar,return_jar,paid_amount,discount,taken_date,entry_by) VALUES('".$customer_id_daily."','".$taken_can_daily."','".$return_can_daily."','".$taken_jar_daily."','".$return_jar_daily."','".$paid_amount_daily."','".$discount_daily."',now(),'".$_SESSION["username"]."')";
+        $query2 = "INSERT INTO  daily_entry_history(customer_id,taken_can,return_can,taken_jar,return_jar,paid_amount,discount,taken_date,entry_by) VALUES('".$customer_id_daily."','".$taken_can_daily."','".$return_can_daily."','".$taken_jar_daily."','".$return_jar_daily."','".$paid_amount_daily."','".$discount_daily."','".$date_daily."','".$_SESSION["username"]."')";
         $stmt2 = $this->conn->prepare($query2);
         $q2=$stmt2->execute();
 
+        
 
         $query3="select * from daily_entry";
         $stmt3= $this->conn->query($query3);

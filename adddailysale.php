@@ -9,13 +9,35 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]))
 
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
 
 <title>Create Customers</title>
 </head>
 <script>
 $(document).ready(function(){
+
+
+
+
+$("#datetimepicker1").datetimepicker({
+  useCurrent: true,
+   format: 'DD-MM-YYYY hh:mm:ss A'
+
+}) 
+$("#datetimepicker1").data('DateTimePicker').defaultDate(new Date());
+
+
 
 
 	
@@ -141,10 +163,19 @@ $("#customer_enter_daily_btn").click(function()
               var return_jar_daily=   $("#return_jar").val();
               var paid_amount_daily=    $("#paid_amount").val();
               var discount_daily= $("#discount").val();
+              var date_daily= convert_date($("#daily_date").val());
+
+
+
+              
+            
+              
+
+              
 
  $.ajax({
     type: "POST",
-   data: {'customer_id_daily':customer_id_daily,'taken_can_daily':taken_can_daily,'return_can_daily':return_can_daily,'taken_jar_daily':taken_jar_daily,'return_jar_daily':return_jar_daily,'paid_amount_daily':paid_amount_daily,'discount_daily':discount_daily},
+   data: {'customer_id_daily':customer_id_daily,'taken_can_daily':taken_can_daily,'return_can_daily':return_can_daily,'taken_jar_daily':taken_jar_daily,'return_jar_daily':return_jar_daily,'paid_amount_daily':paid_amount_daily,'discount_daily':discount_daily,'date_daily':date_daily},
     url: "DailySales/updatecustomerdailydetails.php",
     
     success: function(result) {
@@ -221,7 +252,22 @@ $.ajax({
 }
 
 
+function convert_date(inputdate)
+{
 
+              var arr1=inputdate.split(" ");
+              var s1=arr1[0];
+              var s2=arr1[1];
+
+              var arr2=s1.split("-");
+              var dd=arr2[0];
+              var mm=arr2[1];
+              var yyyy=arr2[2];
+              var newdate=yyyy+"-"+mm+"-"+dd+ " "+s2;
+
+              return newdate;
+
+}
 
 function edit_customer_profile(id) 
 {
@@ -260,6 +306,24 @@ $.ajax({
 <input type="text" id="customer_search">
 
 </div>
+
+         <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' id="daily_date" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+
+            
+
 <div>
 <table border="1" id="customer_table" style="display:none">
 <thead>
