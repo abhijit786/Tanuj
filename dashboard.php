@@ -15,9 +15,10 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
 <?php if( $_SESSION["role"]=="employee") { ?>
 <span>Hello !!! <?php echo $_SESSION["username"]; ?></span>
 <a href="addcustomers.php"> Add Customers</a>
-<a href="adddailysale.php"> Add Daily Sales</a>
-<a href="viewcustomersales.php"> View Customer Sales</a>
-<a href="#"> View Customer Bill</a>
+<a href="adddailysale.php"> Add Daily Entry</a>
+<a href="viewcustomerbill.php"> View Customer Bill</a>
+<a href="viewcustomercompletedetails.php"> View Customer Complete Details</a>
+<a href="#"> </a>
 <a href="logoff.php"> logoff</a>
 <?php } else if( $_SESSION["role"]=="admin") {?>
 <span>Hello !!! <?php echo $_SESSION["username"]; ?></span>

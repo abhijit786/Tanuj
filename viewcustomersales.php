@@ -23,7 +23,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
    
    $.ajax({
     type: "POST",
-    url: "CustomerSales/getcustomerdetails.php",
+    url: "CustomerBills/getcustomerbill.php",
 
     success: function(result) {
     		var json=JSON.parse(result);
@@ -44,7 +44,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
       source: finalData,
       select: function( event, ui ) {
 
-  console.log(view_customer_sales(ui.item.id,ui.item.label));
+  console.log(view_customer_bill(ui.item.id,ui.item.label));
 
     
 }
@@ -65,7 +65,7 @@ error: function (error) {
   });
 
 
-  function view_customer_sales(id,name)
+  function view_customer_bill(id,name)
   {
   	$("#customer_sales").hide();
   	 $.ajax({

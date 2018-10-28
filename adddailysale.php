@@ -27,12 +27,21 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]))
 <script>
 $(document).ready(function(){
 
+search_customer();
+
+
+$("#customer_search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#customer_table_body tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 
 
 
 $("#datetimepicker1").datetimepicker({
   useCurrent: true,
-   format: 'DD-MM-YYYY hh:mm:ss A'
+   format: 'DD-MM-YYYY HH:mm:ss'
 
 }) 
 $("#datetimepicker1").data('DateTimePicker').defaultDate(new Date());
@@ -41,24 +50,14 @@ $("#datetimepicker1").data('DateTimePicker').defaultDate(new Date());
 
 
 	
-    $("#customer_search").keyup(function(){
-        
-        if($("#customer_search").val()=="")
-        {
-        $('#customer_table').hide();
-        $('#customer_message').hide();
-        $('#customer_profile_message').hide();
-        }
-        else
-        {
-            search_customer($("#customer_search").val());
+
             
-        }
-    });
+            
+     
 
 
 
-function search_customer(query) 
+function search_customer() 
 {
 
 
@@ -68,7 +67,6 @@ function search_customer(query)
 
 $.ajax({
     type: "POST",
-   data: {'query': query},
     url: "DailySales/adddailysale.php",
 
     success: function(result) {
@@ -340,7 +338,7 @@ $.ajax({
 <td>Operation</td>
 </tr>
 </thead>
-<tbody>
+<tbody id="customer_table_body">
 
 </tbody>
 </table>

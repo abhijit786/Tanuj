@@ -18,12 +18,12 @@ $db = $database->getConnection();
 $dailysale = new Dailysale($db);
  
 // set customer property values
- $q=$_POST["query"];
+ 
 
 
 // create the customer
 $customers = array();
-$stmt=$dailysale->searchcustomers($q);
+$stmt=$dailysale->searchcustomers();
 
 while( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
 $customers[] = $row; // appends each row to the array

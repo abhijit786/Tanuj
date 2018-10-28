@@ -21,13 +21,13 @@ class Dailysale{
     // signup customer
 
 
-        function searchcustomers($q){
+        function searchcustomers(){
         
        
         // query to insert record
 
         
-        $query = "select * from ".$this->table_name." where customer_created_by='".$_SESSION["username"]."' and ( customer_fn like '".$q."%' or customer_mn like '".$q."%' or customer_ln like '".$q."%')"; 
+        $query = "select * from ".$this->table_name." where customer_created_by='".$_SESSION["username"]."'"; 
         
 
 
@@ -146,14 +146,14 @@ class Dailysale{
 
         //calculations
 
-        $total_can=$total_can_frmtable+$taken_can_up;
-        $total_jar=$total_jar_frmtable+$taken_jar_up;
-        $balance_can=($balance_can_frmtable+$taken_can_up)-($return_can_up);
-        $balance_jar=($balance_jar_frmtable+$taken_jar_up)-($return_jar_up);
-        $total_amount=($total_amount_frmtable)+($total_can*$rate_per_can)+($total_jar*$rate_per_jar);
-        $total_paid=($total_paid_frmtable)+($paid_amount_up);
-        $total_discount=($total_discount_frmtable)+($discount_up);
-        $balance_amount=($balance_amount_frmtable)-($total_paid)-($total_discount);
+        $total_can=$taken_can_up;
+        $total_jar=$taken_jar_up;
+        $balance_can=($taken_can_up)-($return_can_up);
+        $balance_jar=($taken_jar_up)-($return_jar_up);
+        $total_amount=($total_can*$rate_per_can)+($total_jar*$rate_per_jar);
+        $total_paid=($paid_amount_up);
+        $total_discount=($discount_up);
+        $balance_amount=($total_amount-$total_paid)-($total_discount);
 
         
 
