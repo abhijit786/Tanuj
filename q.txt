@@ -1,0 +1,2 @@
+SELECT complete_details.customer_id,customer.customer_fn,customer.customer_mn,customer.customer_ln,complete_details.total_can,complete_details.total_jar,complete_details.balance_can,complete_details.balance_jar,complete_details.total_amount,complete_details.total_paid,complete_details.total_discount,complete_details.balance_amount FROM complete_details INNER JOIN customer on complete_details.customer_id=customer.customer_id and customer.customer_created_by='puredrops'
+
