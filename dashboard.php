@@ -12,7 +12,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
 
 <head>
 <body>
-<?php if( $_SESSION["role"]=="employee") { ?>
+<?php if( $_SESSION["role"]=="admin") { ?>
 <span>Hello !!! <?php echo $_SESSION["username"]; ?></span>
 <a href="addcustomers.php"> Add Customers</a>
 <a href="adddailysale.php"> Add Daily Entry</a>
@@ -20,7 +20,7 @@ if(!isset($_SESSION["username"]) && !isset($_SESSION["role"]) )
 <a href="viewcustomercompletedetails.php"> View Customer Complete Details</a>
 <a href="#"> </a>
 <a href="logoff.php"> logoff</a>
-<?php } else if( $_SESSION["role"]=="admin") {?>
+<?php } else if( $_SESSION["role"]=="employee") {?>
 <span>Hello !!! <?php echo $_SESSION["username"]; ?></span>
 <a href="viewbills.php"> Viewbills</a>
 <a href="logoff.php"> logoff</a>

@@ -345,7 +345,9 @@ $.ajax({
         $('#bill_history_table').hide();
         $('#bill_history_table_message').text("No History Found!!!");
         $('#bill_history_table_message').show();
-        
+           $("#generate_bill_btn").hide();
+
+          $("#print_bill_btn").hide();
         
       }
       else
@@ -650,7 +652,7 @@ var lineSpacing={
       beforePageContent: header,
       margin: {
         top: 50 ,
-        left: 140
+        left: 100
       },
       styles: {
         overflow: 'linebreak',
@@ -658,13 +660,15 @@ var lineSpacing={
         rowHeight: 'auto',
         columnWidth: 'wrap'
       },
-      columnStyles: {
+    columnStyles: {
         1: {columnWidth: 'auto'},
         2: {columnWidth: 'auto'},
         3: {columnWidth: 'auto'},
         4: {columnWidth: 'auto'},
         5: {columnWidth: 'auto'},
         6: {columnWidth: 'auto'},
+        7: {columnWidth: 'auto'},
+        8: {columnWidth: 'auto'},
       },
       startY: startY+=50
     };
@@ -676,9 +680,12 @@ var lineSpacing={
       {title: "Return Can", dataKey: "return_can",width: 40}, 
       {title: "Taken Jar", dataKey: "taken_jar",width: 40}, 
       {title: "Return Jar", dataKey: "return_jar",width: 40}, 
+       {title: "Paid Amount", dataKey: "paid_amount",width: 40}, 
+        {title: "Discount", dataKey: "discount",width: 40}, 
      
 
   ];
+
 
 
   
@@ -1047,7 +1054,7 @@ var lineSpacing={
       beforePageContent: header,
       margin: {
         top: 50 ,
-        left: 140
+        left: 100
       },
       styles: {
         overflow: 'linebreak',
@@ -1062,6 +1069,8 @@ var lineSpacing={
         4: {columnWidth: 'auto'},
         5: {columnWidth: 'auto'},
         6: {columnWidth: 'auto'},
+        7: {columnWidth: 'auto'},
+        8: {columnWidth: 'auto'},
       },
       startY: startY+=50
     };
@@ -1073,6 +1082,8 @@ var lineSpacing={
       {title: "Return Can", dataKey: "return_can",width: 40}, 
       {title: "Taken Jar", dataKey: "taken_jar",width: 40}, 
       {title: "Return Jar", dataKey: "return_jar",width: 40}, 
+       {title: "Paid Amount", dataKey: "paid_amount",width: 40}, 
+        {title: "Discount", dataKey: "discount",width: 40}, 
      
 
   ];
