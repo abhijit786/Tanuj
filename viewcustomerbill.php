@@ -127,6 +127,7 @@ error: function (error) {
 
 
     $( "#cust_name" ).autocomplete({
+      
 
       source: finalData,
       select: function( event, ui ) {
@@ -136,7 +137,9 @@ var id=ui.item.id;
   view_customer_bill(ui.item.id,ui.item.label);
    set_id(id);
     view_customer_bill_history(id);
+      $("#generate_bill_btn").hide();
 
+          $("#print_bill_btn").hide();
 
    $("#datetimepicker_to").show();
     $("#datetimepicker_from").show();
